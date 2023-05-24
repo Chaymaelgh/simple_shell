@@ -62,7 +62,7 @@ void free_INF(INF_t *INF, int all)
 		if (INF->Alias)
 			free_list(&(INF->Alias));
 		Ffree(INF->Environment);
-			info->environ = NULL;
+			INF->Environment = NULL;
 		Bfree((void **)INF->cmd_buff);
 		if (INF->readfd > 2)
 			close(INF->readfd);
