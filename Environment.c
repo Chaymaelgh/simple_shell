@@ -68,7 +68,7 @@ int _MYunsetenV(INF_t *INF)
 }
 /**
  * populate_ENV_list - populate ENV List
- * @info: Str containing Potential arg
+ * @INF: Str containing Potential arg
  * Return: Always Success
  */
 int populate_ENV_list(INF_t *INF)
