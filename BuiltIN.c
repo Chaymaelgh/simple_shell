@@ -4,7 +4,7 @@
  * @info: Str containing Potential arg
  *  Return: exit
  */
-int _MYexit(INF_t *INF)
+int _MYexit(info_t *INF)
 {
 	int extCHECK;
 	if (INF->argv[1])
@@ -28,7 +28,7 @@ int _MYexit(INF_t *INF)
  * @info: Str containing potential arg.
  *  Return: Always Success
  */
-int _MYcd(INF_t *INF)
+int _MYcd(info_t *INF)
 {
 	char *S, *Dir, buffer[1024];
 	int chdir_RET;
@@ -76,7 +76,7 @@ int _MYcd(INF_t *INF)
  * @info: Str containing potential arg.
  *  Return: Always Success
  */
-int _MYhelp(INF_t *INF)
+int _MYhelp(info_t *INF)
 {
 	char **ARG_array;
 	ARG_array = INF->argv;

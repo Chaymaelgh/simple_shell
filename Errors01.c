@@ -28,11 +28,11 @@ int _eRRatoi(char *s)
 }
 /**
  * Print_error - prints ERRORS MESSAGES
- * @INF: the parameter & return info struct
+ * @info: the parameter & return info struct
  * @eStr: string containing specified error type
  * Return :Success
  */
-void Print_error(INF_t *INF, char *eStr)
+void Print_error(info_t *INF, char *eStr)
 {
 	_eputs(INF->fname);
 	_eputs(": ");
@@ -52,7 +52,7 @@ void Print_error(INF_t *INF, char *eStr)
 int Print_d(int Input, int Fd)
 {
 	int (*__putchar)(char) = _putchar;
-	int i, count = 0;
+	int U, count = 0;
 	unsigned int _abs_, current;
 
 	if (Fd == STDERR_FILENO)
@@ -86,7 +86,6 @@ int Print_d(int Input, int Fd)
  * @NUM: number
  * @baSe: baSe
  * @FLags: arg FLags
- *
  * Return: Success
  */
 char *CONvert_number(long int NUM, int baSe, int FLags)
@@ -120,7 +119,6 @@ char *CONvert_number(long int NUM, int baSe, int FLags)
 /**
  * Eemove_Comments -THE function replaces first instance of '#' with '\0'
  * @Buf: address of the string to modify
- *
  * Return: Always Success
  */
 void Remove_Comments(char *buf)

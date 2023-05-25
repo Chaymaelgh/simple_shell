@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
  * clear_INF - Initialize INF_t str
- * @INF: str address
+ * @info: str address
  */
-void clear_INF(INF_t *INF)
+void clear_INF(info_t *INF)
 {
 	INF->arg = NULL;
 	INF->argv = NULL;
@@ -15,7 +15,7 @@ void clear_INF(INF_t *INF)
  * @INF: str adrs
  * @Av: arg vector
  */
-void set_INF(INF_t *INF, char **Av)
+void set_INF(info_t *INF, char **Av)
 {
 	int U = 0;
 
@@ -46,7 +46,7 @@ void set_INF(INF_t *INF, char **Av)
  * @INF: str adrs
  * @all: true If Freeing filied
  */
-void free_INF(INF_t *INF, int all)
+void free_INF(info_t *INF, int all)
 {
 	Ffree(INF->argv);
 	INF->argv = NULL;

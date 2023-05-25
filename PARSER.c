@@ -1,11 +1,11 @@
 #include "shell.h"
 /**
  * is_CMD - Determines if a file IS AN  Executable Command
- * @INF: THE INF str
+ * @info: THE info str
  * @Path: Path to THE file
  * Return: Success
  */
-int is_CMD(INF_t INF char *Path)
+int is_CMD(info_t INF char *Path)
 {
 	struct stat st;
 
@@ -32,20 +32,20 @@ char *DUP_chars(char *PatHstr, int strt, int stp)
 	static char BUFF[1024];
 	int U = 0, k = 0;
 
-	for (k = 0, i = strt; U < stp; U++)
-		if (PatHstr[i] != ':')
+	for (k = 0, U = strt; U < stp; U++)
+		if (PatHstr[U] != ':')
 			buf[k++] = pathstr[U];
 	buf[k] = 0;
 	return (BUFF);
 }
 /**
  * Find_Path - Find this CMD in the PATH String
- * @INF: THE INF str
+ * @info: THE info str
  * @PatHstr:THE PATH string
  * @CMD: the CMD to find
  * Return: Success
  */
-char *Find_Path(INF_t *INF, char *PatHstr, char *CMD)
+char *Find_Path(info_t *INF, char *PatHstr, char *CMD)
 {
 	int U = 0, curr_pos = 0;
 	char *Path;

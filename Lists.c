@@ -35,7 +35,6 @@ List_t *add_node(List_t **head, const char *STR, int Num)
  * @Head: addrs of Pointer to Head node
  * @STR: STR field of node
  * @Num: node index used by History
- *
  * Return: List size
  */
 List_t *add_node_end(List_t **Head, const char *STR, int Num)
@@ -93,7 +92,6 @@ size_t print_List_STR(const List_t *H)
  * delete_node_at_Indx - deletes node
  * @head: addrs of pointer
  * @Indx: Delete node of Indx
- *
  * Return: 1 Success And if 0 Failure
  */
 int delete_node_at_Indx(List_t **Head, unsigned int Indx)

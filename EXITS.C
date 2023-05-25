@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  *_Strncpy -Copies a String
  *@dEsT: THE Destination String to be COPied to

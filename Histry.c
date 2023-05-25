@@ -5,33 +5,32 @@
  * @INF: Parameter str
  * Return: Success
  */
-char *GET_Histry_file(INF_t *INF)
+char *GET_Histry_file(info_t *INF)
 {
-	char *buff, *dir;
+	char *BUFF, *dir;
 
-	dir = _getenv(INF, "HOME=");
+	dir = _getenv(info, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
-	if (!buf)
+	BUFF = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
+	if (!BUFF)
 		return (NULL);
 	buf[0] = 0;
-	_strcpy(buf, dir);
-	_strcat(buf, "/");
-	_strcat(buf, HIST_FILE);
-	return (buf);
+	_strcpy(BUFF, dir);
+	_strcat(BUFF, "/");
+	_strcat(BUFF, HIST_FILE);
+	return (BUFF);
 }
 
 /**
  * write_history - creates a file, or appends to an existing file
- * @info: the parameter struct
- *
+ * @info: the parameter str
  * Return: 1 on success, else -1
  */
-int write_Histry(INF_t *INF)
+int write_Histry(info_t *INF)
 {
 	ssize_t fd;
-	char *filename = GET_History_file(INF);
+	char *filename = GET_Histry_file(INF);
 	List_t *node = NULL;
 
 	if (!filename)
@@ -57,12 +56,12 @@ int write_Histry(INF_t *INF)
  *
  * Return: success
  */
-int read_Histry(INF_t *INF)
+int read_Histry(info_t *INF)
 {
 	int U, last = 0, linecount = 0;
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
-	char *buff = NULL, *filename = GET_Histry_file(INF);
+	char *BUFF = NULL, *filename = GET_Histry_file(INF);
 
 	if (!filename)
 		return (0);
@@ -75,24 +74,24 @@ int read_Histry(INF_t *INF)
 		fsize = st.st_size;
 	if (fsize < 2)
 		return (0);
-	buff = malloc(sizeof(char) * (fsize + 1));
-	if (!buff)
+	BUFF = malloc(sizeof(char) * (fsize + 1));
+	if (!BUFF)
 		return (0);
-	rdlen = read(fd, buff, fsize);
+	rdlen = read(fd, BUFF, fsize);
 	buff[fsize] = 0;
 	if (rdlen <= 0)
-		return (free(buff), 0);
+		return (free(BUFF), 0);
 	close(fd);
-	for (U = 0; i < fsize; U++)
-		if (buff[U] == '\n')
+	for (U = 0; U < fsize; U++)
+		if (BUFF[U] == '\n')
 		{
-			buff[U] = 0;
-			build_Histry_list(INF, buff + last, linecount++);
+			BUFF[U] = 0;
+			build_Histry_list(INF, BUFF + last, linecount++);
 			last = U + 1;
 		}
 	if (last != U)
-		build_Histry_list(INF, buff + last, linecount++);
-	free(buff);
+		build_Histry_list(INF, BUFF + last, linecount++);
+	free(BUFF);
 	INF->histcount = linecount;
 	while (INF->histcount-- >= HIST_MAX)
 		delete_node_at_index(&(INF->Histry), 0);
@@ -107,13 +106,13 @@ int read_Histry(INF_t *INF)
  * @linecount: the history 
  * Return: Always SUCCESS
  */
-int build_Histry_list(INF_t *INF, char *buff, int linecount)
+int build_Histry_list(info_t *INF, char *BUFF, int linecount)
 {
 	List_t *node = NULL;
 
 	if (INF->Histry)
 		node = INF->Histry;
-	add_node_end(&node, buff, linecount);
+	add_node_end(&node, BUFF, linecount);
 
 	if (!INF->Histry)
 		INF->Histry = node;
@@ -125,7 +124,7 @@ int build_Histry_list(INF_t *INF, char *buff, int linecount)
  * @INF: Str containing potential arg
  * Return: 
  */
-int renumber_Histry(INF_t *INF)
+int renumber_Histry(info_t *INF)
 {
 	List_t *node = INF->Histry;
 	int U = 0;
