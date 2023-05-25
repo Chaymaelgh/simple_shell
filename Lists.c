@@ -76,7 +76,7 @@ List_t *add_node_end(List_t **Head, const char *STR, int Num)
  * @H: pointer
  * Return: List size
  */
-size_t print_list_STR(const List_t *H)
+size_t print_List_STR(const List_t *H)
 {
 	size_t U = 0;
 

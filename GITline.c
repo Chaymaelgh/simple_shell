@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * Input_BUF - buffers chained commands
+ * Input_BUF - buffer chained command
  * @INF: Parameter str
- * @BUF: address of Buffer
- * @Len: address of len var
+ * @BUFF: addrs of Buffer
+ * @Len: address of len VAR
  * Return: Success
  */
 size_t Input_buf(INF_t *INF, char **BUFF, size_t *Len)
@@ -12,9 +12,9 @@ size_t Input_buf(INF_t *INF, char **BUFF, size_t *Len)
 	size_t r = 0;
 	size_t Len_p = 0;
 
-	if (!*Len) /* If NOthing left in the BUffer, fill it */
+	if (!*Len)
 	{
-		/*bfree((void **)INF->cmd_BUFF);*/
+
 		free(*BUFF);
 		*BUFF = NULL;
 		signal(SIGINT, sigintHandler);
@@ -27,13 +27,13 @@ size_t Input_buf(INF_t *INF, char **BUFF, size_t *Len)
 		{
 			if ((*BUFF)[r - 1] == '\n')
 			{
-				(*BUFF)[r - 1] = '\0'; /* Remove trailing NEWline */
+				(*BUFF)[r - 1] = '\0'; 
 				r--;
 			}
 			INF->linecount_flag = 1;
 			Remove_comments(*BUFF);
 			build_history_list(INF, *BUFF, INF->histcount++);
-			/* if (_strchr(*buf, ';')) is THIS a Command Chain? */
+
 			{
 				*Len = r;
 				INF->cmd_BUFF = BUFF;
@@ -50,50 +50,50 @@ size_t Input_buf(INF_t *INF, char **BUFF, size_t *Len)
  */
 size_t GET_Input(INF_t *INF)
 {
-	static char *BUFF; /* THE ';' Command Chain BUFfer */
+	static char *BUFF;
 	static size_t U, j, Len;
 	ssize_t r = 0;
 	char **BUFF_p = &(INF->arg), *p0;
 
 	_putchar(BUF_FLUSH);
 	r = input_buf(INF, &BUFF, &Len);
-	if (r == -1) /* EOF */
+	if (r == -1)
 		return (-1);
-	if (Len)	/* We have commands left in chain BUFFER */
+	if (Len)
 	{
-		j = i; /* init NEW Iterator to current BUF Position */
-		p = buf + i; /* GET Pointer for Return */
+		j = U;
+		P0 = buff + U;
 
 		Check_chain(INF, BUFF, &j, U, Len);
-		while (j < Len) /* Iterate to semicolon or end */
+		while (j < Len)
 		{
 			if (is_chain(INF, BUFF, &j))
 				break;
 			j++;
 		}
 
-		U = j + 1; /* Increment Past Nulled ';'' */
-		if (U >= Len) /* REAched end of BUFFer? */
+		U = j + 1;
+		if (U >= Len)
 		{
-			U = Len = 0; /* reset position and length */
+			U = Len = 0;
 			INF->cmd_buf_type = CMD_NORM;
 		}
 
-		*buf_p = p; /* Pass back Pointer to Current command position */
-		return (_strlen(p)); /* REturn length of CURrent COMMAND */
+		*buf_p = P0;
+		return (_strlen(P0));
 	}
 
-	*buf_p = BUFF; /* else not chain, Pass Back BUFfer From _GETline() */
-	return (r); /* Return Length of buffer from _GETline() */
+	*buf_p = BUFF;
+	return (r);
 }
 /**
- * Read_buf - reads a BUFfer
+ * Read_buff - reads a BUFfer
  * @INF: Parameter str
  * @BUFF: buffer
  * @U: size
  * Return: r
  */
-size_t Read_buf(INF_t *INF, char *BUFF, size_t *U)
+size_t Read_buff(INF_t *INF, char *BUFF, size_t *U)
 {
 	size_t r = 0;
 
@@ -119,8 +119,8 @@ int _GETline(INF_t *INF, char **PTr, size_t *length)
 	size_t k;
 	size_t r = 0, s = 0;
 	char *p0 = NULL, *new_p = NULL, *B;
-	p = *PTr;
-	if (p && length)
+	P0 = *PTr;
+	if (P0 && length)
 		s = *length;
 	if ( U == len)
 		U = Len = 0;
@@ -131,13 +131,13 @@ int _GETline(INF_t *INF, char **PTr, size_t *length)
 	c = _strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
 	new_p = _realloc(p, s, s ? s + k : k + 1);
-	if (!new_p) /* MALLOC FAILURE! */
-		return (p ? free(p), -1 : -1);
+	if (!new_P0)
+		return (P0 ? free(P0), -1 : -1);
 
 	if (s)
-		_strncat(new_p, buf + U, k - i);
+		_strncat(new_P0, buff + U, k - U);
 	else
-		_strncpy(new_p, buf + i, k - U + 1);
+		_strncpy(new_P0, buf + U, k - U + 1);
 
 	s += k - U;
 	U = k;
@@ -145,13 +145,13 @@ int _GETline(INF_t *INF, char **PTr, size_t *length)
 
 	if (length)
 		*length = s;
-	*PTr = p;
+	*PTr = P0;
 	return (s);
 }
 
 /**
  * SIGintHandler - blocks ctrl-C
- * @SIG_num: the signal number
+ * @SIG_Num: the signal number
  * Return: void
  */
 void SIGintHandler(__attribute__((unused))int sig_num)

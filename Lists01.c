@@ -23,7 +23,7 @@ size_t List_Len(const list_t *f)
  * @Headd: Pointer to First Node
  * Return: array of strings
  */
-char **List_to_Strings(list_t *Headd)
+char **List_to_Strings(List_t *Headd)
 {
 	list_t *Node = Headd;
 	size_t u = list_len(Headd), j;
@@ -57,13 +57,13 @@ char **List_to_Strings(list_t *Headd)
  * @f: Pointer to First Node
  * Return: Success
  */
-size_t Print_ist(const list_t *f)
+size_t Print_List(const List_t *f)
 {
 	size_t U = 0;
 
 	while (f)
 	{
-		_puts(convert_number(f>num, 10, 0));
+		_puts(convert_number(f>Num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		_puts(f->str ? f->str : "(nil)");
@@ -80,7 +80,7 @@ size_t Print_ist(const list_t *f)
  * @E: THE NEXT character after Prefix to match
  * Return:Success
  */
-list_t *Node_Starts_with(list_t *Node, char *Prefix, char E)
+List_t *Node_Starts_with(List_t *Node, char *Prefix, char E)
 {
 	char P0 = NULL;
 
@@ -99,7 +99,7 @@ list_t *Node_Starts_with(list_t *Node, char *Prefix, char E)
  * @Node: Pointer to the Node
  * Return: Success
  */
-ssize_t GET_Node_index(list_t *Headd, list_t *Node)
+ssize_t GET_Node_Indx(List_t *Headd, List_t *Node)
 {
 	size_t u = 0;
 

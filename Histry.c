@@ -5,7 +5,7 @@
  * @INF: Parameter str
  * Return: Success
  */
-char *GET_histry_file(INF_t *INF)
+char *GET_Histry_file(INF_t *INF)
 {
 	char *buff, *dir;
 
