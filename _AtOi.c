@@ -6,7 +6,7 @@
  */
 int INTERactive(info_t *INF)
 {
-	return (isatty(stdin_FILENO) && INF->readfd <= 2);
+	return (isatty(STDIN_FILENO) && INF->readfd <= 2);
 }
 /**
  * IS_delim - Character Check

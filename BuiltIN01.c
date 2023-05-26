@@ -1,17 +1,17 @@
 #include "shell.h"
 /**
  * _MYhistory - offer History list.
- * @INF: Str containing Potential arg.
+ * @info: Str containing Potential arg.
  *  Return: Always Success
  */
 int _MYhistory(info_t *INF)
 {
-	print_list(INF->history);
+	Print_List(INF->Histry);
 	return (0);
 }
 /**
  * UNset_alias - Sets Alias to str
- * @INF: parameter str
+ * @info: parameter str
  * @str: string
  * Return: Always Success
  */
@@ -20,19 +20,19 @@ int UNset_alias(info_t *INF, char *str)
 	char *P0, B;
 	int RT;
 
-	P0 = _strchr(str, '=');
+	P0 = strchr(str, '=');
 	if (!P0)
 		return (1);
 	B = *P0;
 	*P0 = 0;
-	RT = Delete_node_at_Indx(&(INF->alias)
-		get_node_Indx(INF->alias, node_starts_with(INF->alias , str, -1)));
+	RT = Delete_node_at_Index(&(INF->alias));
+		GET_node_Indx(INF->alias, node_starts_with(INF->alias , str, -1));
 	*P0 = B;
 	return (RT);
 }
 /**
  * SET_alias - Sets Alias to String
- * @INF: Parameter str
+ * @info: Parameter str
  * @str: string
  * Return: Always Success
  */
@@ -40,13 +40,13 @@ int SET_alias(info_t *INF, char *str)
 {
 	char *P0;
 
-	P0 = _strchr(str, '=');
+	P0 = strchr(str, '=');
 	if (!P0)
 		return (1);
 	if (!*++P0)
 		return (UNset_alias(INF, str));
 	UNset_alias(INF, str);
-	return (Add_node_end(&(INF->alias), str, 0) == NULL);
+	return (add_node_end(&(INF->alias), str, 0) == NULL);
 }
 
 /**
@@ -60,8 +60,8 @@ int Print_alias(List_t *node)
 
 	if (node)
 	{
-		P0 = _strchr(node->str, '=');
-		for (A0 = node->str; a <= P0; A0++)
+		P0 = strchr(node->str, '=');
+		for (A0 = node->str; A0 <= P0; A0++)
 			_putchar(*A0);
 		_putchar('\'');
 		_puts(P0 + 1);
@@ -73,7 +73,7 @@ int Print_alias(List_t *node)
 
 /**
  * _MYalias - mimics alias builtIN
- * @INF: Str containing potential arg.
+ * @info: Str containing potential arg.
  *  Return: Always Success
  */
 int _MYalias(info_t *INF)
@@ -93,7 +93,7 @@ int _MYalias(info_t *INF)
 	}
 	for (U = 1; INF->argv[U]; U++)
 	{
-		P0 = _strchr(INF->argv[U], '=');
+		P0 = strchr(INF->argv[U], '=');
 		if (P0)
 			SET_alias(INF, INF->argv[U]);
 		else

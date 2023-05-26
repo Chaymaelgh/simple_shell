@@ -89,7 +89,7 @@ int LOOPhsh(char **);
 /*** Errors.c ***/
 void _Eputs(char *);
 int _Eputchar(char);
-int _Putfd(char B)
+int _Putfd(char B);
 int _Putsfd(char *Str, int fd);
 
 
@@ -105,23 +105,23 @@ typedef struct BuiltIN
 } BuiltIN_table;
 
 
-/*** shLOOP.c ***/
+/*** shellLOOP.c ***/
 int hsh(info_t *, char **);
 int find_BuiltIN(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
-/***  string.c ***/
+/***  String.c ***/
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
-/***  STRing01.c ***/
+/***  String01.c ***/
 char *_STRcpy(char *, char *);
 char *_STRdup(const char *);
-void _Puts(char *);
-int _Putchar(char);
+void _puts(char *);
+int _putchar(char);
 
 /***  MEmories.c ***/
 int Bfree(void **);
@@ -174,7 +174,7 @@ int populate_ENV_list(info_t *);
 List_t *add_node(List_t **, const char *, int);
 List_t *add_node_end(List_t **, const char *, int);
 size_t print_List_STR(const List_t *);
-int delete_node_at_Indx(List_t **, unsigned int);
+int Delete_node_at_index(List_t **, unsigned int);
 void free_List(List_t **);
 
 /***  Lists01.c ***/
