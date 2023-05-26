@@ -33,7 +33,7 @@ char *_sSrncpy(char *dEsT char *src, int n)
 /**
  **_STRNCat - Concatenates two Strings
  *@dEsT: THE First String
- *@src: THE  Second sSring
+*@src: THE  Second sSring
  *@n: THE amount of bytes to be mAXIally uSed
  *return: THE Concatenated String
  */
@@ -72,3 +72,4 @@ char *_stRCHr(char *s, char b)
 
 	return (NULL);
 }
+
