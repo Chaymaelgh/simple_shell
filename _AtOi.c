@@ -4,9 +4,9 @@
  * @info: struct add
  * Return: Success
  */
-int INTERactive(info_t *info)
+int INTERactive(info_t *INF)
 {
-	return (isatty(stdin_FILENO) && info->readfd <= 2);
+	return (isatty(stdin_FILENO) && INF->readfd <= 2);
 }
 /**
  * IS_delim - Character Check

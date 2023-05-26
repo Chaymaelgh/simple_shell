@@ -1,13 +1,12 @@
 #include "shell.h"
-
 /**
  * Input_BUF - buffer chained command
- * @INF: Parameter str
+ * @info: Parameter str
  * @BUFF: addrs of Buffer
  * @Len: address of len VAR
  * Return: Success
  */
-size_t Input_buf(INF_t *INF, char **BUFF, size_t *Len)
+size_t Input_buf(info_t *INF, char **BUFF, size_t *Len)
 {
 	size_t r = 0;
 	size_t Len_p = 0;
@@ -48,7 +47,7 @@ size_t Input_buf(INF_t *INF, char **BUFF, size_t *Len)
  * @INF: Parameter str
  * Return: Success
  */
-size_t GET_Input(INF_t *INF)
+size_t GET_Input(info_t *INF)
 {
 	static char *BUFF;
 	static size_t U, j, Len;
@@ -62,7 +61,7 @@ size_t GET_Input(INF_t *INF)
 	if (Len)
 	{
 		j = U;
-		P0 = buff + U;
+		P0 = BUFF + U;
 
 		Check_chain(INF, BUFF, &j, U, Len);
 		while (j < Len)
@@ -93,7 +92,7 @@ size_t GET_Input(INF_t *INF)
  * @U: size
  * Return: r
  */
-size_t Read_buff(INF_t *INF, char *BUFF, size_t *U)
+size_t Read_buff(info_t *INF, char *BUFF, size_t *U)
 {
 	size_t r = 0;
 
@@ -112,7 +111,7 @@ size_t Read_buff(INF_t *INF, char *BUFF, size_t *U)
  * @Length: Size of Preallocated PTr buffer if not NULL
  * Return: Success
  */
-int _GETline(INF_t *INF, char **PTr, size_t *length)
+int _GETline(info_t *INF, char **PTr, size_t *length)
 {
 	static char BUFF[READ_BUF_SIZE];
 	static size_t U, Len;
@@ -128,20 +127,20 @@ int _GETline(INF_t *INF, char **PTr, size_t *length)
 	if (r == -1 || (r == 0 && Len == 0))
 		return (-1);
 
-	c = _strchr(buf + i, '\n');
-	k = c ? 1 + (unsigned int)(c - buf) : len;
+	B = _strchr(BUFF + U, '\n');
+	k = B ? 1 + (unsigned int)(B - BUFF) : len;
 	new_p = _realloc(p, s, s ? s + k : k + 1);
 	if (!new_P0)
 		return (P0 ? free(P0), -1 : -1);
 
 	if (s)
-		_strncat(new_P0, buff + U, k - U);
+		_strncat(new_P0, BUFF + U, k - U);
 	else
-		_strncpy(new_P0, buf + U, k - U + 1);
+		_strncpy(new_P0, BUFF + U, k - U + 1);
 
 	s += k - U;
 	U = k;
-	p = new_p;
+	P0 = new_p;
 
 	if (length)
 		*length = s;

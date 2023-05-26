@@ -77,10 +77,10 @@ typedef struct passinfo
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
-/* toem_parser.c */
-int is_CMD(INF_t *, char *);
+/* PARSER.c */
+int is_CMD(info_t *, char *);
 char *DUP_chars(char *, int, int);
-char *Find_path(INF_t *, char *, char *);
+char *Find_path(info_t *, char *, char *);
 
 /*** LOOPhsh.c ***/
 int LOOPhsh(char **);
@@ -89,7 +89,7 @@ int LOOPhsh(char **);
 /*** Errors.c ***/
 void _Eputs(char *);
 int _Eputchar(char);
-int _Putfd(char B
+int _Putfd(char B)
 int _Putsfd(char *Str, int fd);
 
 
@@ -101,17 +101,17 @@ int _Putsfd(char *Str, int fd);
 typedef struct BuiltIN
 {
 	char *type;
-	int (*fnc)(INF_t *);
+	int (*fnc)(info_t *);
 } BuiltIN_table;
 
 
 /*** shLOOP.c ***/
-int hsh(INF_t *, char **);
-int find_BuiltIN(INF_t *);
-void find_cmd(INF_t *);
-void fork_cmd(INF_t *);
+int hsh(info_t *, char **);
+int find_BuiltIN(info_t *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
 
-/* toem_string.c */
+/***  string.c ***/
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
@@ -127,19 +127,19 @@ int _Putchar(char);
 int Bfree(void **);
 
 /***  AtOi.c ***/
-int INTERactive(INF_t *);
+int INTERactive(info_t *);
 int IS_delim(char, char *);
 int _ISalpha(int);
 int _AtOi(char *);
 
-/*** Errors01.c ***/
+/***  Errors01.c ***/
 int _eRRatoi(char *);
-void Print_error(INF_t *, char *);
+void Print_error(info_t *, char *);
 int Print_d(int, int);
 char *CONvert_number(long int, int, int);
 void Remove_Comments(char *);
 
-/* toem_exits.c */
+/***  EXITS.c ***/
 char *_sSrncpy(char *, char *, int);
 char *_STRNcat(char *, char *, int);
 char *_stRCHr(char *, char);
@@ -154,28 +154,28 @@ void Ffree(char **);
 void *_RELLoc(void *, unsigned int, unsigned int);
 
 /***  GITline.c ***/
-ssize_t get_input(INF_t *);
-int _GETline(INF_t *, char **, size_t *);
+ssize_t get_input(info_t *);
+int _GETline(info_t *, char **, size_t *);
 void SIGintHandler(int);
 
 /***  GITINF.c ***/
-void clear_INF(INF_t *);
-void set_INF(INF_t *, char **);
-void free_INF(INF_t *, int);
+void clear_INF(info_t *);
+void set_INF(info_t *, char **);
+void free_INF(info_t *, int);
 
 /***  Environment.c ***/
-char *_GetEnv(INF_t *, const char *);
-int _MYenv(INF_t *);
-int _MYsetenV(INF_t *);
-int _MYunsetenV(INF_t *);
-int populate_ENV_list(INF_t *);
+char *_GetEnv(info_t *, const char *);
+int _MYenv(info_t *);
+int _MYsetenV(info_t *);
+int _MYunsetenV(info_t *);
+int populate_ENV_list(info_t *);
 
 /***  Lists.c ***/
 List_t *add_node(List_t **, const char *, int);
 List_t *add_node_end(List_t **, const char *, int);
 size_t print_List_STR(const List_t *);
-int delete_node_at_Indx(list_t **, unsigned int);
-void free_List(list_t **);
+int delete_node_at_Indx(List_t **, unsigned int);
+void free_List(List_t **);
 
 /***  Lists01.c ***/
 size_t List_len(const List_t *);
@@ -185,31 +185,31 @@ List_t *node_starts_with(List_t *, char *, char);
 ssize_t GET_node_Indx(List_t *, List_t *);
 
 /***  BuiltIN.c ***/
-int _MYexit(INF_t *);
-int _MYcd(INF_t *);
-int _MYhelp(INF_t *);
+int _MYexit(info_t *);
+int _MYcd(info_t *);
+int _MYhelp(info_t *);
 
 /***  BuiltIN01.c ***/
-int _MYhistory(INF_t *);
-int _MYalias(INF_t *);
+int _MYhistory(info_t *);
+int _MYalias(info_t *);
 
 /***  GITenv.c ***/
-char **GET_Environ(INF_t *);
-int _UNsetenV(INF_t *, char *);
-int _setenV(INF_t *, char *, char *);
+char **GET_Environ(info_t *);
+int _UNsetenV(info_t *, char *);
+int _setenV(info_t *, char *, char *);
 
 /***  history.c ***/
-char *GET_Histry_file(INF_t *INF);
-int write_Histry(INF_t *INF);
-int read_Histry(INF_t *INF);
-int build_Histry_list(INF_t *INF, char *buff, int linecount);
-int renumber_Histry(INF_t *INF);
+char *GET_Histry_file(info_t *INF);
+int write_Histry(info_t *INF);
+int read_Histry(info_t *INF);
+int build_Histry_list(info_t *INF, char *buff, int linecount);
+int renumber_Histry(info_t *INF);
 
 /*** Vars.c ***/
-int IS_chain(INF_t *, char *, size_t *);
-void Check_chain(INF_t *, char *, size_t *, size_t, size_t);
-int Replace_alias(INF_t *);
-int Replace_vars(INF_t *);
+int IS_chain(info_t *, char *, size_t *);
+void Check_chain(info_t *, char *, size_t *, size_t, size_t);
+int Replace_alias(info_t *);
+int Replace_vars(info_t *);
 int Replace_String(char **, char *);
 
 #endif

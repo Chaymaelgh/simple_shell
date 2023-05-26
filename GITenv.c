@@ -2,10 +2,10 @@
 
 /**
  * GET_Environ - Return string Array copy of ENVIRON
- * @INF: Str containing Potential arg
+ * @info: Str containing Potential arg
  * Return: Always Success
  */
-char **GET_Environ(INF_t *INF)
+char **GET_Environ(info_t *INF)
 {
 	if (!INF->Environment || INF->ENV_changed)
 	{
@@ -20,7 +20,7 @@ char **GET_Environ(INF_t *INF)
  *  Return: 1 on delete, 0 otherwise
  * @VAR: String
  */
-int _UNsetenv(INF_t *INF, char *VAR)
+int _UNsetenv(info_t *INF, char *VAR)
 {
 	List_t *node = INF->ENV;
 	size_t U = 0;
@@ -46,12 +46,12 @@ int _UNsetenv(INF_t *INF, char *VAR)
 }
 /**
  * _setenV - Initialize new Environment VAR
- * @INF: Str containing Potential arg.
+ * @info: Str containing Potential arg.
  * @VAR: String
  * @Value: String of the value of string ENV
  *  Return: Always Success
  */
-int _setenV(INF_t *INF, char *VAR, char *Value)
+int _setenV(info_t *INF, char *VAR, char *Value)
 {
 	char *buff = NULL;
 	List_t *node;

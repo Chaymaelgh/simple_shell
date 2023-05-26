@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
  * _MYhistory - offer History list.
- * @info: Str containing Potential arg.
+ * @INF: Str containing Potential arg.
  *  Return: Always Success
  */
-int _MYhistory(INF_t *INF)
+int _MYhistory(info_t *INF)
 {
 	print_list(INF->history);
 	return (0);
@@ -15,7 +15,7 @@ int _MYhistory(INF_t *INF)
  * @str: string
  * Return: Always Success
  */
-int UNset_alias(INF_t *INF, char *str)
+int UNset_alias(info_t *INF, char *str)
 {
 	char *P0, B;
 	int RT;
@@ -36,7 +36,7 @@ int UNset_alias(INF_t *INF, char *str)
  * @str: string
  * Return: Always Success
  */
-int SET_alias(INF_t *INF, char *str)
+int SET_alias(info_t *INF, char *str)
 {
 	char *P0;
 
@@ -76,7 +76,7 @@ int Print_alias(List_t *node)
  * @INF: Str containing potential arg.
  *  Return: Always Success
  */
-int _MYalias(INF_t *INF)
+int _MYalias(info_t *INF)
 {
 	int U = 0;
 	char *P0 = NULL;

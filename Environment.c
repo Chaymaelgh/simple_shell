@@ -2,22 +2,22 @@
 
 /**
  * _MYenv - Prints the current Environment
- * @INF: Str containing Potential arg.
+ * @info: Str containing Potential arg.
  * Return: Always Success 
  */
-int _MYenv(INF_t INF)
+int _MYenv(info_t INF)
 {
 	Print_list_Str(INF->Env);
 	return (0);
 }
 /**
  * _GetEnv - Get value of Environment Var
- * @INF: Str CONtaining Potential arg.
+ * @info: Str CONtaining Potential arg.
  * @Name: Environment var Name
  *
  * Return: Success
  */
-char *_GetEnv(INF_t *INF, const char *Name)
+char *_GetEnv(info_t *INF, const char *Name)
 {
 	List_t *node = INF->Env;
 	char *P0;
@@ -34,10 +34,10 @@ char *_GetEnv(INF_t *INF, const char *Name)
 
 /**
  * _MYsetenV - NEW  Environment VAR.
- * @INF: Str containing Potential arg
+ * @info: Str containing Potential arg
  *  Return: Always Success
  */
-int _MYsetenV(INF_t *INF)
+int _MYsetenV(info_t *INF)
 {
 	if (INF->argc != 3)
 	{
@@ -50,12 +50,12 @@ int _MYsetenV(INF_t *INF)
 }
 /**
  * _MYunsetenV - Remove Var Environment
- * @INF: str containing Potential arg.
+ * @info: str containing Potential arg.
  *  Return: Always Success
  */
-int _MYunsetenV(INF_t *INF)
+int _MYunsetenV(info_t *INF)
 {
-	int i;
+	int U;
 
 	if (info->argc == 1)
 	{
@@ -68,15 +68,15 @@ int _MYunsetenV(INF_t *INF)
 }
 /**
  * populate_ENV_list - populate ENV List
- * @INF: Str containing Potential arg
+ * @info: Str containing Potential arg
  * Return: Always Success
  */
-int populate_ENV_list(INF_t *INF)
+int populate_ENV_list(info_t *INF)
 {
 	List_t *node = NULL;
 	size_t U;
 
-	for (U = 0; environ[U]; U++)
+	for (U = 0; Enviroment[U]; U++)
 		add_node_end(&node, Environment[U], 0);
 	INF->ENV = node;
 	return (0);

@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * List_Len - Determines Length of linked lSt
  * @F: Pointer to First Node
@@ -75,7 +74,7 @@ size_t Print_List(const List_t *f)
 }
 /**
  * Node_Starts_with - REturn nNde whose string starts WITH Prefix
- * @Node: Pointer to List Headd
+ * @Node: Pointer
  * @Prefix: String to match
  * @E: THE NEXT character after Prefix to match
  * Return:Success
@@ -96,7 +95,7 @@ List_t *Node_Starts_with(List_t *Node, char *Prefix, char E)
 /**
  * GET_Node_index - GETs THE index of a Node
  * @Headd: Pointer to list head
- * @Node: Pointer to the Node
+ * @Node: Pointer
  * Return: Success
  */
 ssize_t GET_Node_Indx(List_t *Headd, List_t *Node)
